@@ -12,8 +12,16 @@ try:
                         ('Julia almeida', 'juliaalmeida@gmail.com', 56)
                     """
     
+    inserir_produtos = """INSERT INTO produtos 
+                        (nome, preco, estoque)
+                        VALUES
+                        ('carregador', 50, 100),
+                        ('monitor', 899.99, 15), 
+                        ('mouse', 149.90, 25)
+                    """
     cursor = con.cursor()
     cursor.execute(inserir_clientes)
+    cursor.execute(inserir_produtos)
     con.commit()
     print(cursor.rowcount, 'registros inseridos na tabela!')
     cursor.close()
