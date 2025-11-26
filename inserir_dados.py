@@ -32,6 +32,21 @@ try:
     cursor.execute(inserir_produtos)
     cursor.execute(inserir_pedidos)
     con.commit()
+    
+    #inserindo dados fornecidos pelo usuário
+    
+    print('Cadastro de cliente no banco de dados')
+    print('Entre com os dados conforme solicitado \n')
+    nome = input('Nome do cliente: ')
+    email = input('Email: ')
+    idade = int(input('Idade: '))
+
+    sql_usuario = "INSERT INTO clientes (nome, email, idade) VALUES (%s, %s, %s)"
+    valores = (nome, email, idade)
+
+    cursor.execute(sql_usuario, valores)
+    con.commit()
+
     print(cursor.rowcount, 'registros inseridos na tabela!')
     cursor.close()
 
